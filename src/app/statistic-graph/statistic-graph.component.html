@@ -1,0 +1,39 @@
+<mat-card *ngIf="receivedFromChild" style="text-align: center; padding: 20px; ">
+  <b class="mainFakeUnderline">{{receivedFromChild}}</b>
+  <hr class="hrLineHue">
+</mat-card>
+
+<div style="display: flex; margin-bottom: 5px;height: 450px">
+  <mat-card style="flex-grow: 1;overflow: scroll;;width: 40%">
+    <div style="text-align:center;"> <b class="fakeUnderline">Users registering</b></div>
+    <ng-container *ngIf="allUsers; else userStillLoading">
+      <div *ngFor="let data of allUsers; let i=index ">
+        {{data.id}} | {{data.title}}
+        <hr class="hrLineHue">
+      </div>
+    </ng-container>
+
+    <ng-template #userStillLoading>
+      <mat-spinner color="accent" mode="indeterminate" value="75" style="margin: 50px auto;"></mat-spinner>
+    </ng-template>
+  </mat-card>
+
+  <mat-card style="flex-grow: 1;width: 20%">
+    <div style="text-align:center;"> <b class="fakeUnderline">Users Counting...</b></div>
+    <app-user-stats [userCount]="allUsers.length" (childEvent)="receivedFromChild=$event"
+      (childEventToHide)="receivedFromChild=$event" *ngIf="allUsers">
+    </app-user-stats>
+  </mat-card>
+
+  <mat-card style="flex-grow: 1;width: 40%">
+    <div style="text-align:center;"> <b class="fakeUnderline">Users using services</b></div>
+    <app-pie-graph-stats></app-pie-graph-stats>
+  </mat-card>
+</div>
+
+<mat-divider></mat-divider>
+
+<mat-card style=" margin-bottom: 5px;">
+  <div style="text-align:center;"> <b class="fakeUnderline">Users Joined</b></div>
+  <app-graph-stats></app-graph-stats>
+</mat-card>

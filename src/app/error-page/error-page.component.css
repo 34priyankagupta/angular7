@@ -1,0 +1,14 @@
+.errorStyling {
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+  align-items: center;
+}
+
+.errorStylingText {
+  width: 35%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,4 @@
+.bkgrndImg{
+    background-image: linear-gradient(#ffffffed 0% 100%),url(..\..\assets\img\backgroundImg.png);
+    background-repeat: repeat;
+  }

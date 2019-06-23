@@ -1,0 +1,12 @@
+.bkgrndImg{
+    background-image: linear-gradient(#ffffffdb 0% 100%),url(..\..\assets\img\backgroundImg.png);
+    background-repeat: repeat;
+  }
+
+.menuList{
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: flex-start;
+    border: 1px solid #e5caca;
+    margin: 3px;
+}

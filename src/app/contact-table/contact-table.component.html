@@ -1,0 +1,62 @@
+<div class="mat-elevation-z8" *ngIf="tableDatasource; ">
+  <table mat-table [dataSource]="dataSource" style="width: 100%; ">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id" style="display: flex">
+      <th mat-header-cell *matHeaderCellDef style="width: 5%"> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.contactId}} </td>
+    </ng-container>
+
+    <!-- capital Phone -->
+    <ng-container matColumnDef="phone" style="display: flex">
+      <th mat-header-cell *matHeaderCellDef style="width: 25%"> Phone </th>
+      <td mat-cell *matCellDef="let element; ">
+        <ng-template #showData>{{element.contactPhone}}</ng-template>
+        <div *ngIf="(showEditBox && ( IdReceived === element.contactId )) else showData ">
+          <input type="text" [(ngModel)]="element.contactPhone"></div>
+      </td>
+      <!-- <td mat-cell  *ngIf="showEditBox; else Hide"> <input type="text"> </td> -->
+    </ng-container>
+
+    <!-- region mobile -->
+    <ng-container matColumnDef="mobile"  style="display: flex">
+      <th mat-header-cell *matHeaderCellDef style="width: 25%"> Mobile </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-template #showData>{{element.contactMobile}}</ng-template>
+        <div *ngIf="(showEditBox && ( IdReceived === element.contactId )) else showData">
+          <input type="text" [(ngModel)]="element.contactMobile" ></div>
+      </td>
+    </ng-container>
+
+    <!-- region Column -->
+    <ng-container matColumnDef="email"  style="display: flex">
+      <th mat-header-cell *matHeaderCellDef style="width: 25%"> Email </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-template #showData>{{element.contactEmail}}</ng-template>
+        <div *ngIf="(showEditBox && ( IdReceived === element.contactId )) else showData">
+          <input type="text" [(ngModel)]="element.contactEmail" ></div>
+      </td>
+
+    </ng-container>
+
+    <!-- region Actions -->
+    <ng-container matColumnDef="actions"  style="display: flex">
+      <th mat-header-cell *matHeaderCellDef style="margin: 0 auto; text-align: center;;width: 20%"> Actions </th>
+      <td mat-cell *matCellDef="let row" style="margin: 0 auto; text-align: center;;">
+
+        <button mat-button (click)="updateContact(row)"
+          *ngIf="(showEditBox && ( IdReceived === row.contactId )); else showData">FinalData</button>
+        <!-- phoneModel && mobileModel && emailModel -->
+        <ng-template #showData>
+          <button mat-button (click)="showUpdateContactBox(row)">Update</button>
+        </ng-template>
+        <button mat-button (click)="deleteContact(row)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

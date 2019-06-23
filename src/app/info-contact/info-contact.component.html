@@ -1,0 +1,16 @@
+
+
+
+<h1 style="color: gray; margin: 60px auto">{{totalContactDataRows}}</h1>
+<div *ngIf="totalContactDataRows !== 0; else noLength">
+    <b>
+      Nice!!... Keep Adding
+    </b>
+  </div>
+  
+  
+  <ng-template #noLength>
+    <b>
+      Oops... Why so empty <br> Add immediately :P
+    </b>
+  </ng-template>

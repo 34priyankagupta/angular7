@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>User ID: {{data.id}}</h1>
+<div mat-dialog-content>
+
+  <div class="column-container">
+    <mat-form-field>
+      <input matInput placeholder="User-Service ID" value="{{data.userId}}" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Title" value="{{data.title}}" disabled></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Description" value="{{data.body}}"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Select">
+        <mat-option value="option">Service A</mat-option>
+        <mat-option value="option">Service B</mat-option>
+        <mat-option value="option">Service C</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+
+
+</div>
+<div mat-dialog-actions style="display: flex; justify-content: flex-end;">
+  <button mat-button (click)="onNoClick()">Update</button>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Close</button>
+</div>

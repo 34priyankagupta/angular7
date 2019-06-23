@@ -1,0 +1,32 @@
+<div class="mat-elevation-z8" *ngIf="dataSource;  else DataFetching">
+  <table mat-table [dataSource]="dataSource">
+
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- capital Column -->
+    <ng-container matColumnDef="capital">
+      <th mat-header-cell *matHeaderCellDef> Capital </th>
+      <td mat-cell *matCellDef="let element"> {{element.capital}} </td>
+    </ng-container>
+
+    <!-- region Column -->
+    <ng-container matColumnDef="region">
+      <th mat-header-cell *matHeaderCellDef> Region </th>
+      <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+<ng-template #DataFetching>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

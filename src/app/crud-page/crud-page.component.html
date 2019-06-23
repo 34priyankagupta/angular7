@@ -1,0 +1,83 @@
+<div style="display: flex; text-align: center; height: 350px;">
+  <mat-card style="width: 35%">
+    <mat-card-content>
+
+      <b class="fakeUnderline">Please add your contact detail</b>
+
+      <form [formGroup]="contactForm" (keydown.enter)="addContacts()">
+        <div class="column-container">
+
+          <mat-form-field floatLabel="always">
+            <input #elmRef matInput placeholder="Phone Number" formControlName="phone">
+            <mat-error *ngIf="phone.touched && phone.invalid">
+              Phone Number is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Mobile Number" formControlName="mobile">
+            <mat-error *ngIf="mobile.touched && mobile.invalid">
+              Mobile Number is required & can be same as Phone Number
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="email.touched && email.invalid">
+              Email is required, should be valid
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+      </form>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div style="text-align: right;">
+        <button mat-button [disabled]="contactForm.invalid" (click)="addContacts()" cdkFocusInitial>Add Contact</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card style="width: 30%">
+    <b class="fakeUnderline">An eye on contact list length</b>
+    <app-info-contact [totalContactDataRows]="contactList.length"></app-info-contact>
+  </mat-card>
+
+  <mat-card style="width: 35%; overflow-y: auto;">
+    <b class="fakeUnderline">Play with Tree </b>
+    <app-play-tree></app-play-tree>
+  </mat-card>
+</div>
+
+<mat-card>
+
+  <br>
+  <hr class="hrLineHue">
+  <br>
+
+  <div *ngIf="contactList.length !== 0; else dataEmpty;" style="display: flex;justify-content: space-around">
+    <div style="width:10%; height: 300px; margin: 0px 10px;">
+        <b class="fakeUnderline">Behaviour Subjects </b>
+        <app-behv-subject></app-behv-subject>
+    </div>
+    <div style="width:90%;">
+      <div style="display: flex; justify-content: space-around;">
+        <b class="fakeUnderline">Contact Table</b>
+        <button mat-button (click)="clearAllContacts()">CLEAR ALL</button>
+      </div>
+      <app-contact-table [tableDatasource]="contactList" (deleteEmission)="deleteDataForContact($event)"
+        (updateEmission)="updateDataForContact($event)">
+      </app-contact-table>
+    </div>
+  </div>
+
+  <ng-template #dataEmpty>
+    <div style="text-align: center;">
+        <h1 style="color: gray;">Ooppss!! Contact list is empty... </h1>
+        <img src="..\..\assets\dog.gif" alt="Sorry pic" >
+    </div>
+    
+  </ng-template>
+</mat-card>

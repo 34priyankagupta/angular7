@@ -1,0 +1,35 @@
+.sideMenuList {
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+/* Ripple effect */
+.rippleEffect {
+  background-position: center;
+  transition: background 0.8s;
+}
+
+.rippleEffect:hover {
+  background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+}
+
+.rippleEffect:active {
+  background-color: #6eb9f7;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.activeTab {
+  background-color: #c75306;
+}
+
+.btnFunc{
+  margin: 7px;
+}
+
+.bkgrndImg{
+  background-image: linear-gradient(#ffffffb8 0% 100%),url(..\assets\img\backgroundImg.png);
+  background-repeat: repeat;
+}

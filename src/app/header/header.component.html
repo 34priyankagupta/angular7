@@ -1,0 +1,27 @@
+<mat-toolbar color="accent" style="display:block ;">
+  <div style="display: flex; justify-content: space-between; padding: 10px 0 10px 0">
+    <div>My App</div>
+    <div>
+      <button mat-button (click)="logout()" *ngIf="checkLogin()">Logout</button>
+    </div>
+  </div>
+</mat-toolbar>
+
+
+<div *ngIf="checkLogin()" class="bkgrndImg menuList">
+  <div>
+    <button mat-button routerLink="/contactpage" routerLinkActive="activeTab">Add Contact</button>
+  </div>
+  <div>
+    <button mat-button routerLink="/allcountries" routerLinkActive="activeTab">Countries</button>
+  </div>
+  <div>
+    <button mat-button routerLink="/listusers" routerLinkActive="activeTab">List User</button>
+  </div>
+  <div>
+    <button mat-button routerLink="/addusers" routerLinkActive="activeTab">Add User</button>
+  </div>
+  <div>
+    <button mat-button routerLink="/statistics" routerLinkActive="activeTab">User Statistics</button>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.column-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.column-container>* {
+  width: 100%;
+}
+
+.hrLineHue {
+  border-color: #ffffff47;
+}
+
+.fakeUnderline:after,
+.mainFakeUnderline:after {
+  background: #fbc3c3;
+  display: block;
+  content: '';
+  height: 2px;
+  width: 150px;
+  margin: 10px auto;
+}
+
+.mainFakeUnderline:after {
+  background: #aaaaef;
+  width: 200px;
+}
